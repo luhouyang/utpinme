@@ -8,6 +8,8 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:utp_in_me/src/utp_ui.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   Gemini.init(apiKey: 'AIzaSyCVuAXlWbZuPj73dmddUPCRN-hPomjKmYU');
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +51,8 @@ class UtpInMe extends StatelessWidget {
           ),
           themeMode: ThemeMode.system,
           debugShowCheckedModeBanner: false,
-          home: const AuthPage());
+          home: AuthPage(navigatorKey: navigatorKey,),
+          navigatorKey: navigatorKey,);
     });
   }
 }
