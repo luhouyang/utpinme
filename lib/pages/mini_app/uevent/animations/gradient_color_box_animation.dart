@@ -13,10 +13,10 @@ class GradientColorBoxAnimation extends StatefulWidget {
 class GradientColorBoxAnimationState extends State {
   // set colours
   final List _colors = [
-    const Color.fromARGB(255, 185, 185, 255),
-    const Color.fromARGB(255, 165, 165, 255),
-    const Color.fromARGB(255, 120, 120, 255),
-    const Color.fromARGB(255, 100, 100, 255),
+    Colors.grey[100],
+    Colors.grey[200],
+    Colors.grey[400],
+    Colors.grey[600],
   ];
 
   // track colour

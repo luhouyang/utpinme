@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:utp_in_me/auth/auth_usecase.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,22 +17,25 @@ class _LoginPageState extends State<LoginPage> {
   final passwordInput = TextEditingController();
 
   void signUserIn() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: LoadingAnimationWidget.staggeredDotsWave(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              size: 100,
-            ),
-          );
-        });
+    AuthUseCase authUseCase = Provider.of<AuthUseCase>(context, listen: false);
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return Center(
+    //         child: LoadingAnimationWidget.staggeredDotsWave(
+    //           color: Theme.of(context).colorScheme.primaryContainer,
+    //           size: 100,
+    //         ),
+    //       );
+    //     });
 
     try {
+      authUseCase.changeBool(true);
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailInput.text, password: passwordInput.text);
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
+
+      authUseCase.changeBool(false); // ignore: use_build_context_synchronously
+      // Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emailErrorState();

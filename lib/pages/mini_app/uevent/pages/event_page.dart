@@ -160,8 +160,6 @@ class _EventPageState extends State<EventPage> {
                         imgUrl: "assets/cimb.png",
                         event: entry,
                       ),
-                      Text(entry.title),
-                      Text("Date: ${entry.dateTime.toString().split(" ")[0]}")
                     ],
                   );
                 },
