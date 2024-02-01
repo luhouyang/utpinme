@@ -110,7 +110,10 @@ class _UEventUIState extends State<UEventUI> {
         child: _windgetOption.elementAt(_selectedIndex),
       ),
       endDrawer: NavigationDrawer(
-        onDestinationSelected: (i) => setState(() => _selectedIndex = i),
+        onDestinationSelected: (i) {
+          setState(() => _selectedIndex = i);
+          Navigator.pop(context);
+        },
         selectedIndex: _selectedIndex,
         children: <Widget>[
           Row(
@@ -180,10 +183,10 @@ class _UEventUIState extends State<UEventUI> {
           ),
           if (canAddEvent)
             const NavigationDrawerDestination(
-                  label: Text("Add Event"),
-                  icon: Icon(Icons.add_circle_outline_outlined),
-                  selectedIcon: Icon(Icons.add_circle_outline_rounded),
-                ),
+              label: Text("Add Event"),
+              icon: Icon(Icons.add_circle_outline_outlined),
+              selectedIcon: Icon(Icons.add_circle_outline_rounded),
+            ),
           if (canAddEvent)
             const Padding(
               padding: EdgeInsets.fromLTRB(28, 8, 28, 8),

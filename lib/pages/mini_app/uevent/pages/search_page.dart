@@ -20,7 +20,7 @@ class _SearchPageState extends State<SearchPage> {
     "UPAG",
     "GDSC",
     "SK"
-    ""
+        ""
   ];
 
   String organizerSelection = "";
@@ -124,8 +124,6 @@ class _SearchPageState extends State<SearchPage> {
                           imgUrl: "assets/cimb.png",
                           event: entry,
                         ),
-                        Text(entry.title),
-                        Text("Date: ${entry.dateTime.toString().split(" ")[0]}")
                       ],
                     );
                   },
