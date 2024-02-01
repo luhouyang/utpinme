@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../widgets/placeholders.dart';
 
 class ShimmerEvent extends StatelessWidget {

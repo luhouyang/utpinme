@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/e_memo/e_memo_advisor.dart';
-import 'package:utp_in_me/pages/mini_app/e_memo/e_memo_approval.dart';
-import 'package:utp_in_me/pages/mini_app/e_memo/e_memo_myrequest.dart';
-import 'package:utp_in_me/pages/mini_app/e_memo/new_request_services/new_request.dart';
+import 'e_memo_advisor.dart';
+import 'e_memo_approval.dart';
+import 'e_memo_myrequest.dart';
+import 'new_request_services/new_request.dart';
 
 class Ememo extends StatelessWidget {
   const Ememo({super.key});

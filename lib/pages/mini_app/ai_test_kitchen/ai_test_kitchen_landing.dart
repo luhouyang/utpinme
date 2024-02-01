@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/notebook_lm.dart';
+import 'notebook_lm.dart';
 //import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/utp_assist.dart';
 import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/utp_assist_v2.dart';
 //import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/utp_chatbot.dart';
@@ -164,10 +164,7 @@ class AiTestKitchen extends StatelessWidget {
                                                                                 11,
                                                                             fontWeight:
                                                                                 FontWeight.w900,
-                                                                            color: Theme.of(context).colorScheme.primary))
-                                                                            )
-                                                                            )
-                                                                            ),
+                                                                            color: Theme.of(context).colorScheme.primary))))),
                                                       ],
                                                     ),
                                                     const Padding(

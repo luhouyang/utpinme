@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/settings/dev_page/material_theme_col.dart';
-import 'package:utp_in_me/pages/settings/dev_page/material_widget_lib.dart';
+
+import 'material_theme_col.dart';
+import 'material_widget_lib.dart';
 
 class MaterialTestPage extends StatelessWidget {
   const MaterialTestPage({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:utp_in_me/auth/auth_usecase.dart';
+import 'auth_usecase.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

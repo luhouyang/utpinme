@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/uevent/entities/package_entity.dart';
+import '../entities/package_entity.dart';
 import '../entities/event_entity.dart';
 import '../utilities/utilities.dart';
 

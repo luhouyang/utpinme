@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/pg_pack/pg_jan_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/pg_pack/pg_jul_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/public_holiday.dart';
+import 'pg_jan_table.dart';
+import 'pg_jul_table.dart';
+import '../public_holiday.dart';
 
 class PgAcadCal extends StatelessWidget {
   const PgAcadCal({super.key});

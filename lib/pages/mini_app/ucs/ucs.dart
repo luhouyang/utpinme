@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:utp_in_me/pages/mini_app/ucs/create_case_data.dart';
-import 'package:utp_in_me/pages/mini_app/ucs/knowledge_hub.dart';
-import 'package:utp_in_me/pages/mini_app/ucs/my_support.dart';
+import 'create_case_data.dart';
+import 'knowledge_hub.dart';
+import 'my_support.dart';
 
 class Ucs extends StatelessWidget {
   Ucs({super.key});

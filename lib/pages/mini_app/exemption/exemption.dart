@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/exemption/exemption_approved.dart';
-import 'package:utp_in_me/pages/mini_app/exemption/exemption_myrequest.dart';
-import 'package:utp_in_me/pages/mini_app/exemption/exemption_newsubmit.dart';
+import 'exemption_approved.dart';
+import 'exemption_myrequest.dart';
+import 'exemption_newsubmit.dart';
 
 class ExemptionApp extends StatelessWidget {
   const ExemptionApp({super.key});

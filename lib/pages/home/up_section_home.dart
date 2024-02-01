@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:utp_in_me/pages/home/news/more_news.dart';
-import 'package:utp_in_me/pages/home/upcoming_events/more_upcoming_events.dart';
-import 'package:utp_in_me/pages/home/news/viewer_news.dart';
-import 'package:utp_in_me/pages/home/panic_button.dart';
-import 'package:utp_in_me/pages/mini_app/digital_id/digital_id.dart';
+import 'news/more_news.dart';
+import 'upcoming_events/more_upcoming_events.dart';
+import 'news/viewer_news.dart';
+import 'panic_button.dart';
+import '../mini_app/digital_id/digital_id.dart';
 
 class UpSectionHome extends StatefulWidget {
   const UpSectionHome({super.key});

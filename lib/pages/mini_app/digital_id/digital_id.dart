@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:utp_in_me/pages/mini_app/digital_id/lmg_pass.dart';
-import 'package:utp_in_me/pages/mini_app/digital_id/student_id.dart';
+import 'lmg_pass.dart';
+import 'student_id.dart';
 
 class DigitalId extends StatelessWidget {
   DigitalId({super.key});

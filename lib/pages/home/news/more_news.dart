@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/home/news/viewer_news.dart';
+import 'viewer_news.dart';
 
 class MoreNews extends StatelessWidget {
   const MoreNews({super.key});

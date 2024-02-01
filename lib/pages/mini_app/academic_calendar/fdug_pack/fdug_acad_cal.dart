@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/fdug_pack/fdug_jan_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/fdug_pack/fdug_may_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/fdug_pack/fdug_sept_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/public_holiday.dart';
+import 'fdug_jan_table.dart';
+import 'fdug_may_table.dart';
+import 'fdug_sept_table.dart';
+import '../public_holiday.dart';
 
 class FdUgAcadCal extends StatelessWidget {
   const FdUgAcadCal({super.key});

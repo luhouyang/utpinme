@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import '../animations/gradient_color_box_animation.dart';
 import '../entities/event_entity.dart';
 import '../pages/individual_event_page.dart';
-import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
   final String imgUrl;

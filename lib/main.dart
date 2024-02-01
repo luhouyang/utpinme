@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:utp_in_me/auth/auth_page.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 //import 'package:flutter/services.dart';
 import 'package:dynamic_color/dynamic_color.dart';
-import 'package:utp_in_me/src/utp_ui.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:utp_in_me/src/utp_ui.dart';
+
+import 'auth/auth_page.dart';
+import 'firebase_options.dart';
 
 void main() async {
   Gemini.init(apiKey: 'AIzaSyCVuAXlWbZuPj73dmddUPCRN-hPomjKmYU');

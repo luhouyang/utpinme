@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:utp_in_me/pages/mini_app/usummon/appeal.dart';
-import 'package:utp_in_me/pages/mini_app/usummon/summon.dart';
+import 'appeal.dart';
+import 'summon.dart';
 
 class USummon extends StatelessWidget {
   USummon({super.key});

@@ -1,12 +1,12 @@
 //import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/chat_input_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/chat_input_box.dart';
 
 class SectionChat extends StatefulWidget {
   const SectionChat({super.key});

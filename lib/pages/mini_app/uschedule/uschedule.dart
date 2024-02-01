@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/uschedule/uschedule_course.dart';
-import 'package:utp_in_me/pages/mini_app/uschedule/uschedule_exam.dart';
+import 'uschedule_course.dart';
+import 'uschedule_exam.dart';
 
 class USchedule extends StatelessWidget {
   const USchedule({super.key});

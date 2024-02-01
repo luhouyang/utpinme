@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/intern_pack/intern_table.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/public_holiday.dart';
+
+import '../public_holiday.dart';
+import 'intern_table.dart';
 
 class InternAcadCal extends StatelessWidget {
   const InternAcadCal({super.key});

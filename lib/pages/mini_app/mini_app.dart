@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
-import 'package:utp_in_me/pages/mini_app/ai_test_kitchen/utp_assist_v2.dart';
-import 'package:utp_in_me/pages/mini_app/e_memo/e_memo.dart';
-import 'package:utp_in_me/pages/mini_app/ucs/ucs.dart';
-import 'package:utp_in_me/pages/mini_app/facility/facility.dart';
-import 'package:utp_in_me/pages/mini_app/academic_calendar/acad_cal.dart';
-import 'package:utp_in_me/pages/mini_app/directory/directory.dart';
-import 'package:utp_in_me/pages/mini_app/usummon/usummon.dart';
-import 'package:utp_in_me/pages/mini_app/shuttle_bus/shuttle_bus.dart';
-import 'package:utp_in_me/pages/mini_app/digital_id/digital_id.dart';
-import 'package:utp_in_me/pages/mini_app/iAttend/iattend.dart';
-import 'package:utp_in_me/pages/mini_app/postalhub/postal_hub.dart';
-import 'package:utp_in_me/pages/mini_app/exemption/exemption.dart';
-import 'package:utp_in_me/pages/mini_app/uschedule/uschedule.dart';
-import 'package:utp_in_me/pages/mini_app/attendance/attendance.dart';
-import 'package:utp_in_me/pages/mini_app/uevent/uevent.dart';
+import 'ai_test_kitchen/utp_assist_v2.dart';
+import 'e_memo/e_memo.dart';
+import 'ucs/ucs.dart';
+import 'facility/facility.dart';
+import 'academic_calendar/acad_cal.dart';
+import 'directory/directory.dart';
+import 'usummon/usummon.dart';
+import 'shuttle_bus/shuttle_bus.dart';
+import 'digital_id/digital_id.dart';
+import 'iAttend/iattend.dart';
+import 'postalhub/postal_hub.dart';
+import 'exemption/exemption.dart';
+import 'uschedule/uschedule.dart';
+import 'attendance/attendance.dart';
+import 'uevent/uevent.dart';
 
 class MoreApp extends StatelessWidget {
   const MoreApp({super.key});

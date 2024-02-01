@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utp_in_me/pages/mini_app/attendance/attendance_search.dart';
+import 'attendance_search.dart';
 //import 'package:utp_in_me/pages/el_tigre_attendance/attendance_search.dart';
 //import 'package:utp_in_me/pages/srcutp/srcutp_popup.dart';
 //import 'package:utp_in_me/pages/ucs.dart';
