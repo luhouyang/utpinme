@@ -13,9 +13,7 @@ class IndividualEventPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  //State<EventPage> createState() => _EventPageState();
   State<IndividualEventPage> createState() => _IndividualEventPageState();
-  //_IndividualEventPageState createState() => _IndividualEventPageState();
 }
 
 class _IndividualEventPageState extends State<IndividualEventPage> {
@@ -46,7 +44,6 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                         : Image.memory(widget.event.bannerImage!),
                   )
                 : Container(
-                    //height: MediaQuery.of(context).size.width,
                     child: widget.event.merchData.isEmpty
                         ? const Placeholder()
                         : Stack(
@@ -104,7 +101,7 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                         child: Container(
                                           width: 12.0,
                                           height: 12.0,
-                                          margin: EdgeInsets.symmetric(
+                                          margin: const EdgeInsets.symmetric(
                                               vertical: 8.0, horizontal: 4.0),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -127,15 +124,6 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                             ],
                           ),
                   ),
-            /*ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: widget.event.merchData.length,
-                            itemBuilder: (context, index) {
-                              return Image.memory(
-                                  widget.event.merchImages[index]!);
-                            },
-                          )),*/
             Positioned(
               top: 40,
               left: 16,

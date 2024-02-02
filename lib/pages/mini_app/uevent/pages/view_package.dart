@@ -78,8 +78,7 @@ class _ViewPackageState extends State<ViewPackage> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        //File merchPicFile = widget.packagesList[index];
-        PackageEntity package = widget.packagesList[index]; // Corrected here
+        PackageEntity package = widget.packagesList[index];
 
         return GestureDetector(
           onTap: () {

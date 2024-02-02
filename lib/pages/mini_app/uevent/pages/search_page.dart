@@ -19,8 +19,8 @@ class _SearchPageState extends State<SearchPage> {
     "PETRA",
     "UPAG",
     "GDSC",
-    "SK"
-        ""
+    "SK",
+    "",
   ];
 
   String organizerSelection = "";
@@ -80,8 +80,6 @@ class _SearchPageState extends State<SearchPage> {
                                     setState(() {
                                       organizerSelection = value!;
                                     });
-                                    debugPrint(
-                                        organizerSelection); // TODO: delete in production
                                   }),
                             ),
                           ],

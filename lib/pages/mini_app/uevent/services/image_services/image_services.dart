@@ -22,15 +22,16 @@ class ImageServices {
     }
   }
 
-  Future<Uint8List?> retrieveImage(String fileName, String docRef) async {
+  Future<Uint8List> retrieveImage(String fileName, String docRef) async {
     final folderRef = storageRef.child(docRef);
     final imageRef = folderRef.child(fileName);
 
     try {
       final Uint8List? imageData = await imageRef.getData();
-      return imageData;
+      return imageData!;
     } on FirebaseException catch (e) {
       debugPrint("Error: $e");
     }
+    return Uint8List(1);
   }
 }

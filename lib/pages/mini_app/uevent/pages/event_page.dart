@@ -88,7 +88,7 @@ class _EventPageState extends State<EventPage> {
   Widget _buildEventList(EventUseCase eventUseCase) {
     return FutureBuilder(
       future:
-          function, // Assuming eventsStream is a Stream<List<EventEntity>> in your EventUseCase
+          function,
       builder: (context, snapshot) {
         if (eventUseCase.allEvents.isNotEmpty && _isLoadMoreRunning) {
           return Column(
@@ -145,7 +145,6 @@ class _EventPageState extends State<EventPage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    //childAspectRatio: 1,
                     childAspectRatio: MediaQuery.of(context).size.width /
                         (MediaQuery.of(context).size.height / 1.5)),
                 scrollDirection: Axis.vertical,

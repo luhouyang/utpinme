@@ -69,19 +69,9 @@ class _AddEventState extends State<AddEvent> {
       if (isEventDetailsVisible) {
         eventBannerFile = File(croppedFile!.path);
         eventBannerBytes = await eventBannerFile!.readAsBytes();
-
-        debugPrint(eventBannerFile!.path); // TODO: delete in production
-        debugPrint(eventBannerFile!
-            .lengthSync()
-            .toString()); // TODO: delete in production
       } else if (!isEventDetailsVisible) {
         currentPackageFile = File(croppedFile!.path);
         currentPackageBytes = await currentPackageFile!.readAsBytes();
-
-        debugPrint(currentPackageFile!.path); // TODO: delete in production
-        debugPrint(currentPackageFile!
-            .lengthSync()
-            .toString()); // TODO: delete in production
       }
 
       setState(() {});
@@ -131,68 +121,68 @@ class _AddEventState extends State<AddEvent> {
     }
   }
 
+  Widget myImageContainer() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        height: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width * 0.7,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.0),
+            border: Border.all(color: const Color(0xffFFC21A))),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const Text(
+              'You have not yet picked an image.',
+              textAlign: TextAlign.center,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: IconButton(
+                        onPressed: () async {
+                          getImageFromGallery();
+                        },
+                        tooltip: 'Pick Image from gallery or Camera',
+                        icon: const Icon(Icons.photo),
+                      ),
+                    ),
+                    const Text("Gallery"),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: IconButton(
+                        onPressed: () async {
+                          getImageFromCamera();
+                        },
+                        icon: const Icon(Icons.camera),
+                      ),
+                    ),
+                    const Text("Camera"),
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   // ui component for pick image button
   Widget _pickImageContainer() {
     if (isEventDetailsVisible) {
       return eventBannerBytes == null
-          ? Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                height: MediaQuery.of(context).size.width * 0.7,
-                width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: const Color(0xffFFC21A))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text(
-                      'You have not yet picked an image.',
-                      textAlign: TextAlign.center,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 8.0),
-                              child: IconButton(
-                                onPressed: () async {
-                                  //showOption(context);
-                                  getImageFromGallery();
-                                },
-                                tooltip: 'Pick Image from gallery or Camera',
-                                icon: const Icon(Icons.photo),
-                              ),
-                            ),
-                            const Text("Gallery"),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 8.0),
-                              child: IconButton(
-                                onPressed: () async {
-                                  //showOption(context);
-                                  getImageFromCamera();
-                                },
-                                icon: const Icon(Icons.camera),
-                              ),
-                            ),
-                            const Text("Camera"),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            )
+          ? myImageContainer() 
           : Stack(
               children: [
                 Padding(
@@ -236,64 +226,7 @@ class _AddEventState extends State<AddEvent> {
             );
     } else {
       return currentPackageBytes == null
-          ? Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                height: MediaQuery.of(context).size.width * 0.7,
-                width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(color: const Color(0xffFFC21A))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text(
-                      'You have not yet picked an image.',
-                      textAlign: TextAlign.center,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 8.0),
-                              child: IconButton(
-                                onPressed: () async {
-                                  //showOption(context);
-                                  getImageFromGallery();
-                                },
-                                tooltip: 'Pick Image from gallery or Camera',
-                                icon: const Icon(Icons.photo),
-                              ),
-                            ),
-                            const Text("Gallery"),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 8.0),
-                              child: IconButton(
-                                onPressed: () async {
-                                  //showOption(context);
-                                  getImageFromCamera();
-                                },
-                                icon: const Icon(Icons.camera),
-                              ),
-                            ),
-                            const Text("Camera"),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            )
+          ? myImageContainer()
           : Stack(
               children: [
                 Padding(
@@ -428,10 +361,6 @@ class _AddEventState extends State<AddEvent> {
                             return _previewImages();
                           case ConnectionState.active:
                             if (snapshot.hasError) {
-                              /*return Text(
-                                'Pick image error: ${snapshot.error}}',
-                                textAlign: TextAlign.center,
-                              );*/
                               debugPrint(snapshot.error.toString());
                               return _pickImageContainer();
                             } else {
@@ -462,10 +391,6 @@ class _AddEventState extends State<AddEvent> {
                                 return _previewImages();
                               case ConnectionState.active:
                                 if (snapshot.hasError) {
-                                  /*return Text(
-                                    'Pick image error: ${snapshot.error}}',
-                                    textAlign: TextAlign.center,
-                                  );*/
                                   debugPrint(snapshot.error.toString());
                                   return _pickImageContainer();
                                 } else {
@@ -528,53 +453,23 @@ class _AddEventState extends State<AddEvent> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextField(
-                          controller: eventTitleController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Event Name'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: eventDescController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Event Description'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: ticketPriceController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Ticket Price',
-                              prefixText: 'RM   ',
-                              prefixStyle: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold)),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: eventLoactionController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Location'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        myTextField(
+                            controller: eventTitleController,
+                            label: 'Event Name'),
+                        const SizedBox(height: 10),
+                        myTextField(
+                            controller: eventDescController,
+                            label: 'Event Description'),
+                        const SizedBox(height: 10),
+                        myTextFieldWithPrefix(
+                            controller: ticketPriceController,
+                            label: 'Ticket Price',
+                            prefix: 'RM   '),
+                        const SizedBox(height: 10),
+                        myTextField(
+                            controller: eventLoactionController,
+                            label: 'Location'),
+                        const SizedBox(height: 10),
                         InkWell(
                           onTap: () async {
                             DateTime? date = await showDateTimePicker(
@@ -587,10 +482,6 @@ class _AddEventState extends State<AddEvent> {
                                 timestamp = Timestamp.fromDate(date);
                               });
                             }
-                            debugPrint(
-                                "Datetime: ${date.toString()}"); // TODO: delete in production
-                            debugPrint(
-                                "Timestamp: ${timestamp.toString()}"); // TODO: delete in production
                           },
                           child: Container(
                             padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
@@ -684,17 +575,30 @@ class _AddEventState extends State<AddEvent> {
                                       package.imageFileName,
                                       docReference.id.toString(),
                                       merchPicFiles[index]);
-
-                                  // TODO: delete testing statements
-                                  debugPrint(
-                                      "File name: ${package.imageFileName} ### File loc: ${docReference.id.toString()} ### ${merchPicFiles[index]}");
                                 });
                               } catch (e) {
                                 debugPrint(e.toString());
                               }
                             } else {
-                              // TODO: show dialogue
-                              debugPrint("You havent selected an image");
+                              showDialog(
+                                  useSafeArea: true,
+                                  context: context,
+                                  builder: ((cotext) {
+                                    return Center(
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Dialog(
+                                          child: Padding(
+                                            padding: EdgeInsets.all(16.0),
+                                            child: Text(
+                                                "Please select an image\nPress anywhere to close"),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }));
                             }
                           },
                           child: const Center(
@@ -726,42 +630,22 @@ class _AddEventState extends State<AddEvent> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextField(
-                          controller: packageNameController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Package Name'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: packageDescController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Package Description'),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          controller: packagePriceController,
-                          style: const TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)),
-                              labelText: 'Package Price',
-                              prefixText: 'RM   ',
-                              prefixStyle: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold)),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        myTextField(
+                            controller: packageNameController,
+                            label: 'Package Name'),
+
+                        const SizedBox(height: 10),
+                        myTextField(
+                            controller: packageDescController,
+                            label: 'Package Description'),
+
+                        const SizedBox(height: 10),
+                        myTextFieldWithPrefix(
+                            controller: packagePriceController,
+                            label: 'Package Price',
+                            prefix: 'RM   '),
+
+                        const SizedBox(height: 10),
                         // add package data to local
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
@@ -771,14 +655,6 @@ class _AddEventState extends State<AddEvent> {
                                 // store merch image data
                                 merchPicFiles
                                     .add(File(currentPackageFile!.path));
-
-                                debugPrint(merchPicFiles
-                                    .last.path); // TODO: delete in production
-                                debugPrint(merchPicFiles.last
-                                    .lengthSync()
-                                    .toString()); // TODO: delete in production
-                                debugPrint(
-                                    "Currently has ${merchPicFiles.length} merch pics"); // TODO: delete in production
 
                                 PackageEntity packageEntity = PackageEntity(
                                   merchImage: currentPackageBytes!,
@@ -800,6 +676,26 @@ class _AddEventState extends State<AddEvent> {
                                 packageDescController.clear();
                                 packagePriceController.clear();
                                 setState(() {});
+                              } else {
+                                showDialog(
+                                    useSafeArea: true,
+                                    context: context,
+                                    builder: ((cotext) {
+                                      return Center(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Dialog(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(16.0),
+                                              child: Text(
+                                                  "Please select an image\nPress anywhere to close"),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }));
                               }
                             },
                             child: const Center(
@@ -833,7 +729,9 @@ class _AddEventState extends State<AddEvent> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 25,)
+                        const SizedBox(
+                          height: 25,
+                        )
                       ],
                     ),
                   ),
@@ -843,6 +741,33 @@ class _AddEventState extends State<AddEvent> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget myTextField(
+      {required TextEditingController controller, required String label}) {
+    return TextField(
+        controller: controller,
+        style: const TextStyle(fontSize: 12),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          labelText: label,
+        ));
+  }
+
+  Widget myTextFieldWithPrefix(
+      {required TextEditingController controller,
+      required String label,
+      required String prefix}) {
+    return TextField(
+      controller: controller,
+      style: const TextStyle(fontSize: 12),
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+          labelText: label,
+          prefixText: prefix,
+          prefixStyle:
+              const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
     );
   }
 }
