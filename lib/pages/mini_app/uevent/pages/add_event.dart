@@ -829,10 +829,11 @@ class _AddEventState extends State<AddEvent> {
                                   );
                                 },
                                 child: const Text("View Packages"),
-                              )
+                              ),
                             ],
                           ),
                         ),
+                        const SizedBox(height: 25,)
                       ],
                     ),
                   ),
