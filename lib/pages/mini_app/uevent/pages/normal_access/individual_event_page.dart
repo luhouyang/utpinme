@@ -1,16 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import '../entities/package_entity.dart';
-import '../entities/event_entity.dart';
-import '../utilities/utilities.dart';
+import '../../entities/package_entity.dart';
+import '../../entities/event_entity.dart';
+import '../../utilities/utilities.dart';
 
 class IndividualEventPage extends StatefulWidget {
-  final String imgUrl;
   final EventEntity event;
 
-  const IndividualEventPage(
-      {Key? key, required this.event, required this.imgUrl})
-      : super(key: key);
+  const IndividualEventPage({Key? key, required this.event}) : super(key: key);
 
   @override
   State<IndividualEventPage> createState() => _IndividualEventPageState();
@@ -105,6 +102,13 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                               vertical: 8.0, horizontal: 4.0),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
+                                            border: Border.all(
+                                                color: const Color(0xffFFC21A)
+                                                    .withOpacity(
+                                                        _carouselCurrent ==
+                                                                entry.key
+                                                            ? 0.9
+                                                            : 0.0)),
                                             color: (Theme.of(context)
                                                             .brightness ==
                                                         Brightness.dark
@@ -166,7 +170,7 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
               bottom: 0,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xff353F54),
+                  color: Color.fromARGB(255, 4, 21, 49),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25),
@@ -206,7 +210,6 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                               ),
                             ),
                           ),
-                          //const Padding(padding: EdgeInsets.all(5)),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -216,9 +219,13 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                               elevation: isEventDetailsVisible ? 0 : 8,
                             ),
                             onPressed: () {
-                              setState(() {
-                                isEventDetailsVisible = false;
-                              });
+                              if (widget.event.merchImages.isNotEmpty) {
+                                if (widget.event.merchImages[0] != null) {
+                                  setState(() {
+                                    isEventDetailsVisible = false;
+                                  });
+                                }
+                              }
                             },
                             child: Text(
                               "Packages",
@@ -230,12 +237,11 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
+                          )
                         ],
                       ),
-                      Visibility(
-                        visible: isEventDetailsVisible,
-                        child: Column(
+                      isEventDetailsVisible
+                      ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Padding(padding: EdgeInsets.all(10)),
@@ -266,11 +272,8 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                               style: MyTextStyles.individualEventNormalTxt,
                             ),
                           ],
-                        ),
-                      ),
-                      Visibility(
-                          visible: !isEventDetailsVisible,
-                          child: Expanded(
+                        )
+                      : Expanded(
                             child: ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -318,7 +321,7 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                 );
                               },
                             ),
-                          )),
+                          ),
                     ],
                   ),
                 ),

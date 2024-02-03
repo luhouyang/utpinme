@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../animations/shimmer_event.dart';
-import '../usecases/event_usecase.dart';
-import '../widgets/event_card.dart';
+import '../../animations/shimmer_event.dart';
+import '../../usecases/event_usecase.dart';
+import '../../widgets/event_card.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({Key? key}) : super(key: key);
@@ -87,8 +87,7 @@ class _EventPageState extends State<EventPage> {
 
   Widget _buildEventList(EventUseCase eventUseCase) {
     return FutureBuilder(
-      future:
-          function,
+      future: function,
       builder: (context, snapshot) {
         if (eventUseCase.allEvents.isNotEmpty && _isLoadMoreRunning) {
           return Column(
@@ -110,11 +109,8 @@ class _EventPageState extends State<EventPage> {
                   return Column(
                     children: [
                       EventCard(
-                        imgUrl: "assets/cimb.png",
                         event: entry,
                       ),
-                      Text(entry.title),
-                      Text("Date: ${entry.dateTime.toString().split(" ")[0]}")
                     ],
                   );
                 },
@@ -156,7 +152,6 @@ class _EventPageState extends State<EventPage> {
                   return Column(
                     children: [
                       EventCard(
-                        imgUrl: "assets/cimb.png",
                         event: entry,
                       ),
                     ],

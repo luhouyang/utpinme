@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
-import '../entities/event_entity.dart';
-import '../entities/package_entity.dart';
-import '../services/image_services/image_services.dart';
-import 'view_package.dart';
+import '../../entities/event_entity.dart';
+import '../../entities/package_entity.dart';
+import '../../services/image_services/image_services.dart';
+import '../normal_access/view_package.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});

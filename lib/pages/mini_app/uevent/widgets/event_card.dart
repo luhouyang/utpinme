@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../animations/gradient_color_box_animation.dart';
 import '../entities/event_entity.dart';
-import '../pages/individual_event_page.dart';
+import '../pages/normal_access/individual_event_page.dart';
 
 class EventCard extends StatelessWidget {
-  final String imgUrl;
   final EventEntity event;
-  const EventCard({super.key, required this.event, required this.imgUrl});
+  const EventCard({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,6 @@ class EventCard extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => IndividualEventPage(
-                    imgUrl: imgUrl,
                     event: event,
                   )),
         );

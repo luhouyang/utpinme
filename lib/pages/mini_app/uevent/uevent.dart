@@ -2,11 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'pages/add_event.dart';
-import 'pages/event_page.dart';
-import 'pages/search_page.dart';
-import 'uevent_help_page.dart';
-import 'uevent_my_ticket.dart';
+import 'package:utp_in_me/pages/mini_app/uevent/pages/admin_access/manage_event_page.dart';
+import 'pages/admin_access/add_event.dart';
+import 'pages/normal_access/event_page.dart';
+import 'pages/normal_access/search_page.dart';
+import 'pages/normal_access/uevent_help_page.dart';
+import 'pages/normal_access/uevent_my_ticket.dart';
 import 'uevent_product_page.dart';
 import 'package:animations/animations.dart';
 import 'usecases/event_usecase.dart';
@@ -70,6 +71,7 @@ class _UEventUIState extends State<UEventUI> {
         setState(() {
           canAddEvent = true;
           _windgetOption.insert(3, const AddEvent());
+          _windgetOption.insert(4, const ManageEventPage());
         });
       }
 
@@ -186,6 +188,12 @@ class _UEventUIState extends State<UEventUI> {
               label: Text("Add Event"),
               icon: Icon(Icons.add_circle_outline_outlined),
               selectedIcon: Icon(Icons.add_circle_outline_rounded),
+            ),
+          if (canAddEvent)
+            const NavigationDrawerDestination(
+              label: Text("Manage Event"),
+              icon: Icon(Icons.settings),
+              selectedIcon: Icon(Icons.settings_applications_sharp),
             ),
           if (canAddEvent)
             const Padding(

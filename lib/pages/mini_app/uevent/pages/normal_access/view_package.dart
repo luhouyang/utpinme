@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../entities/package_entity.dart';
+import '../../entities/package_entity.dart';
 
 class ViewPackage extends StatefulWidget {
   final List<PackageEntity> packagesList;
