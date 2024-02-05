@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../usecases/event_usecase.dart';
@@ -24,8 +23,6 @@ class _SearchPageState extends State<SearchPage> {
   ];
 
   String organizerSelection = "";
-  DateTime? dateSelection;
-  Timestamp? timestamp;
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +47,12 @@ class _SearchPageState extends State<SearchPage> {
                           Container(
                             alignment: Alignment.center,
                             margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                            padding: const EdgeInsets.fromLTRB(30, 0, 20, 0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30.0),
                               color: Colors.blue[900],
                             ),
                             child: DropdownButton<String>(
+                              padding: const EdgeInsets.fromLTRB(30, 0, 20, 0),
                                 hint: organizerSelection == ""
                                     ? const Text(
                                         "Organizer",

@@ -235,23 +235,7 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                 if (packageList.isEmpty && !showingSnackbar) {
                                   showingSnackbar = true;
                                   ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                        content: const Text(
-                                          "No Packages",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                        action: SnackBarAction(
-                                            label: 'OK',
-                                            textColor: const Color(0xffFFC21A),
-                                            onPressed: () {
-                                              showingSnackbar = false;
-                                              ScaffoldMessenger.of(context)
-                                                  .hideCurrentSnackBar();
-                                            }),
-                                      ))
+                                      .showSnackBar(mySnackbar("No Packages"))
                                       .closed
                                       .then((value) {
                                     showingSnackbar = false;
@@ -259,23 +243,8 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                 } else if (!showingSnackbar) {
                                   showingSnackbar = true;
                                   ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
-                                    content: const Text(
-                                      "Loading Package",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    action: SnackBarAction(
-                                        label: 'OK',
-                                        textColor: const Color(0xffFFC21A),
-                                        onPressed: () {
-                                          showingSnackbar = false;
-                                          ScaffoldMessenger.of(context)
-                                              .hideCurrentSnackBar();
-                                        }),
-                                  )).closed
+                                      .showSnackBar(mySnackbar("Loading Packages"))
+                                      .closed
                                       .then((value) {
                                     showingSnackbar = false;
                                   });
@@ -448,6 +417,25 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
           ],
         ),
       ),
+    );
+  }
+
+  SnackBar mySnackbar(String mssg) {
+    return SnackBar(
+      content: Text(
+        mssg,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
+      ),
+      action: SnackBarAction(
+          label: 'OK',
+          textColor: const Color(0xffFFC21A),
+          onPressed: () {
+            showingSnackbar = false;
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          }),
     );
   }
 }

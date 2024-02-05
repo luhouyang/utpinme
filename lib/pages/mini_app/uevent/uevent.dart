@@ -41,7 +41,7 @@ class UEventUI extends StatefulWidget {
 class _UEventUIState extends State<UEventUI> {
   final user = FirebaseAuth.instance.currentUser;
   List<String> authorizedUsers = [];
-  bool canAddEvent = false;
+  bool isAuthorized = false;
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   void openDrawer() {
@@ -69,7 +69,7 @@ class _UEventUIState extends State<UEventUI> {
 
       if (authorizedUsers.contains(user?.email)) {
         setState(() {
-          canAddEvent = true;
+          isAuthorized = true;
           _windgetOption.insert(3, const AddEvent());
           _windgetOption.insert(4, const ManageEventPage());
         });
@@ -183,19 +183,19 @@ class _UEventUIState extends State<UEventUI> {
             padding: EdgeInsets.fromLTRB(28, 8, 28, 8),
             child: Divider(),
           ),
-          if (canAddEvent)
+          if (isAuthorized)
             const NavigationDrawerDestination(
               label: Text("Add Event"),
               icon: Icon(Icons.add_circle_outline_outlined),
               selectedIcon: Icon(Icons.add_circle_outline_rounded),
             ),
-          if (canAddEvent)
+          if (isAuthorized)
             const NavigationDrawerDestination(
               label: Text("Manage Event"),
               icon: Icon(Icons.settings),
               selectedIcon: Icon(Icons.settings_applications_sharp),
             ),
-          if (canAddEvent)
+          if (isAuthorized)
             const Padding(
               padding: EdgeInsets.fromLTRB(28, 8, 28, 8),
               child: Divider(),
