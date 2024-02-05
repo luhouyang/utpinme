@@ -9,7 +9,7 @@ import '../../entities/event_entity.dart';
 import '../../entities/package_entity.dart';
 import '../../services/image_services/image_services.dart';
 import '../normal_access/view_package.dart';
-
+//TODO: add insta icon, whatsapp icon, number
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});
 
@@ -29,6 +29,8 @@ class _AddEventState extends State<AddEvent> {
   var eventDescController = TextEditingController();
   var ticketPriceController = TextEditingController();
   var eventLoactionController = TextEditingController();
+  var contactNoController = TextEditingController();
+  var socialMediaLinkController = TextEditingController();
 
   DateTime? dateSelection;
   Timestamp? timestamp;
@@ -182,7 +184,7 @@ class _AddEventState extends State<AddEvent> {
   Widget _pickImageContainer() {
     if (isEventDetailsVisible) {
       return eventBannerBytes == null
-          ? myImageContainer() 
+          ? myImageContainer()
           : Stack(
               children: [
                 Padding(
@@ -470,12 +472,19 @@ class _AddEventState extends State<AddEvent> {
                             controller: eventLoactionController,
                             label: 'Location'),
                         const SizedBox(height: 10),
+                        myTextField(
+                            controller: contactNoController,
+                            label: 'Contact No.'),
+                        const SizedBox(height: 10),
+                        myTextField(
+                            controller: socialMediaLinkController,
+                            label: 'Instagram Link'),
+                        const SizedBox(height: 10),
                         InkWell(
                           onTap: () async {
                             DateTime? date = await showDateTimePicker(
                               context: context,
                             );
-
                             if (date != null) {
                               setState(() {
                                 dateSelection = date;
@@ -535,6 +544,8 @@ class _AddEventState extends State<AddEvent> {
                                     dateTime: dateSelection!,
                                     cost: double.parse(
                                         ticketPriceController.text),
+                                    contactNo: contactNoController.text,
+                                    socialMediaLink: socialMediaLinkController.text,
                                     organizer:
                                         "SYNTECH", // get organizer from user_entity of registed clubs
                                     //tags: tagsSelection,
@@ -633,18 +644,15 @@ class _AddEventState extends State<AddEvent> {
                         myTextField(
                             controller: packageNameController,
                             label: 'Package Name'),
-
                         const SizedBox(height: 10),
                         myTextField(
                             controller: packageDescController,
                             label: 'Package Description'),
-
                         const SizedBox(height: 10),
                         myTextFieldWithPrefix(
                             controller: packagePriceController,
                             label: 'Package Price',
                             prefix: 'RM   '),
-
                         const SizedBox(height: 10),
                         // add package data to local
                         Padding(

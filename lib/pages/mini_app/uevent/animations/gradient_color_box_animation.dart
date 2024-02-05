@@ -4,14 +4,16 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class GradientColorBoxAnimation extends StatefulWidget {
-  const GradientColorBoxAnimation({Key? key}) : super(key: key);
+  final double? height;
+
+  const GradientColorBoxAnimation({Key? key, this.height}) : super(key: key);
 
   @override
   GradientColorBoxAnimationState createState() =>
       GradientColorBoxAnimationState();
 }
 
-class GradientColorBoxAnimationState extends State {
+class GradientColorBoxAnimationState extends State<GradientColorBoxAnimation> {
   // set colours
   final List _colors = [
     Colors.grey[100],
@@ -64,7 +66,7 @@ class GradientColorBoxAnimationState extends State {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      height: MediaQuery.of(context).size.width * 0.45,
+      height:widget.height ?? MediaQuery.of(context).size.width * 0.45,
       duration: const Duration(milliseconds: 1000),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),

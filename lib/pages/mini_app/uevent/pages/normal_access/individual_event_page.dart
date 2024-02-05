@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:utp_in_me/pages/mini_app/uevent/animations/gradient_color_box_animation.dart';
 import '../../entities/package_entity.dart';
 import '../../entities/event_entity.dart';
 import '../../utilities/utilities.dart';
@@ -37,7 +40,9 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                 ? Container(
                     width: MediaQuery.of(context).size.width,
                     child: widget.event.bannerImage == null
-                        ? const Placeholder()
+                        ? GradientColorBoxAnimation(
+                            height: MediaQuery.of(context).size.width,
+                          )
                         : Image.memory(widget.event.bannerImage!),
                   )
                 : Container(
@@ -224,6 +229,36 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                   setState(() {
                                     isEventDetailsVisible = false;
                                   });
+                                } else {
+                                  if (packageList.isEmpty) {
+                                    showDialog(
+                                        context: context,
+                                        builder: ((context) {
+                                          return const Dialog(
+                                            child: Text(
+                                              "No Packages",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          );
+                                        }));
+                                  } else {
+                                    showDialog(
+                                        context: context,
+                                        builder: ((context) {
+                                          return const Dialog(
+                                            child: Text(
+                                              "Loading packages",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          );
+                                        }));
+                                  }
                                 }
                               }
                             },
@@ -241,87 +276,150 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                         ],
                       ),
                       isEventDetailsVisible
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(padding: EdgeInsets.all(10)),
-                            Text(
-                              widget.event.title,
-                              style: MyTextStyles.individualEventTitleTxt,
+                          ? Expanded(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              widget.event.title,
+                                              style: MyTextStyles
+                                                  .individualEventTitleTxt,
+                                            ),
+                                            Text(
+                                              "Event by ${widget.event.organizer}",
+                                              style: MyTextStyles
+                                                  .individualEventNormalTxt,
+                                            ),
+                                          ],
+                                        ),
+                                        const Expanded(child: SizedBox()),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 10, 0, 0),
+                                          child: InkWell(
+                                            onHover: (value) {},
+                                            onTap: () async {
+                                              await launchUrl(Uri.parse(
+                                                  "https://www.instagram.com/luhouyang?igsh=ajdnMW95ODJsMG4x"));
+                                            },
+                                            child: SvgPicture.asset(
+                                              "assets/svg/instagram.svg",
+                                              height: 40,
+                                              width: 40,
+                                              colorFilter:
+                                                  const ColorFilter.mode(
+                                                      Color(0xffFFC21A),
+                                                      BlendMode.srcIn),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 20,
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(height: 20),
+                                    const Text(
+                                      "Description",
+                                      style:
+                                          MyTextStyles.individualEventHeaderTxt,
+                                    ),
+                                    Text(
+                                      widget.event.description,
+                                      style:
+                                          MyTextStyles.individualEventNormalTxt,
+                                    ),
+                                    const SizedBox(height: 20),
+                                    const Text(
+                                      "Ticket",
+                                      style:
+                                          MyTextStyles.individualEventHeaderTxt,
+                                    ),
+                                    Text(
+                                      "RM${widget.event.cost.toString()}",
+                                      style:
+                                          MyTextStyles.individualEventNormalTxt,
+                                    ),
+                                    const SizedBox(height: 20),
+                                    const Text(
+                                      "Contact No.",
+                                      style:
+                                          MyTextStyles.individualEventHeaderTxt,
+                                    ),
+                                    Text(
+                                      widget.event.contactNo,
+                                      style:
+                                          MyTextStyles.individualEventNormalTxt,
+                                    ),
+                                    const SizedBox(height: 50),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : Expanded(
+                              child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                itemCount: packageList.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    contentPadding:
+                                        const EdgeInsets.fromLTRB(8, 10, 8, 0),
+                                    title: Text(
+                                      packageList[index].packageName,
+                                      style:
+                                          MyTextStyles.individualEventTitleTxt,
+                                    ),
+                                    subtitle: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "Description",
+                                          style: MyTextStyles
+                                              .individualEventHeaderTxt,
+                                        ),
+                                        Text(
+                                          packageList[index].description,
+                                          style: MyTextStyles
+                                              .individualEventNormalTxt,
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        const Text(
+                                          "Price",
+                                          style: MyTextStyles
+                                              .individualEventHeaderTxt,
+                                        ),
+                                        Text(
+                                          "RM${packageList[index].cost}",
+                                          style: MyTextStyles
+                                              .individualEventNormalTxt,
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        if (index == packageList.length - 1)
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                            Text(
-                              "Event by ${widget.event.organizer}",
-                              style: MyTextStyles.individualEventNormalTxt,
-                            ),
-                            const SizedBox(height: 20),
-                            const Text(
-                              "Description",
-                              style: MyTextStyles.individualEventHeaderTxt,
-                            ),
-                            Text(
-                              widget.event.description,
-                              style: MyTextStyles.individualEventNormalTxt,
-                            ),
-                            const SizedBox(height: 20),
-                            const Text(
-                              "Ticket",
-                              style: MyTextStyles.individualEventHeaderTxt,
-                            ),
-                            Text(
-                              "RM${widget.event.cost.toString()}",
-                              style: MyTextStyles.individualEventNormalTxt,
-                            ),
-                          ],
-                        )
-                      : Expanded(
-                            child: ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              itemCount: packageList.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  contentPadding:
-                                      const EdgeInsets.fromLTRB(8, 10, 8, 0),
-                                  title: Text(
-                                    packageList[index].packageName,
-                                    style: MyTextStyles.individualEventTitleTxt,
-                                  ),
-                                  subtitle: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "Description",
-                                        style: MyTextStyles
-                                            .individualEventHeaderTxt,
-                                      ),
-                                      Text(
-                                        packageList[index].description,
-                                        style: MyTextStyles
-                                            .individualEventNormalTxt,
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      const Text(
-                                        "Price",
-                                        style: MyTextStyles
-                                            .individualEventHeaderTxt,
-                                      ),
-                                      Text(
-                                        "RM${packageList[index].cost}",
-                                        style: MyTextStyles
-                                            .individualEventNormalTxt,
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
                     ],
                   ),
                 ),

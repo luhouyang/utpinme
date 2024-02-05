@@ -97,6 +97,8 @@ flutter:
   - assets/prototype/7.jpg
   - assets/prototype/news_1.jpg
 
+  - assets/svg/
+
   fonts:
       - family: GoogleSans
         fonts:

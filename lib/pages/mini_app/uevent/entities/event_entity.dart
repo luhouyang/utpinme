@@ -20,6 +20,7 @@ class EventEntity {
   final double cost;
   final List<String>? sponsors;
   final String? socialMediaLink;
+  final String contactNo;
   final List<dynamic> merchData; // keep track of image file names
   List<Uint8List?> merchImages; //  ADDED
   final String bannerImageName; //  ADDED
@@ -45,6 +46,7 @@ class EventEntity {
       required this.cost,
       this.sponsors,
       this.socialMediaLink,
+      required this.contactNo,
       required this.merchData,
       required this.merchImages,
       required this.bannerImageName});
@@ -65,6 +67,8 @@ class EventEntity {
       status: map['status'] as String,
       bannerImage: null,
       cost: map['cost'] * 1.0,
+      socialMediaLink: map['socialMediaLink'] ?? '',
+      contactNo: map['contactNo'] ?? '',
       //tags: map['tags'] as List<dynamic>,
       merchData: map['merchData'] as List<dynamic>,
       merchImages: [],
@@ -82,6 +86,8 @@ class EventEntity {
       'organizer': organizer,
       'status': status,
       'cost': cost,
+      'socialMediaLink': socialMediaLink,
+      'contactNo': contactNo,
       //'tags': tags,
       "bannerImage": bannerImage,
       'merchData': merchData,
