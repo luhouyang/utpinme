@@ -58,6 +58,7 @@ class _ManageEventPageState extends State<ManageEventPage> {
         return SingleChildScrollView(
           child: Column(
             children: [
+              // top section, dropdown & fetch button
               Padding(
                 padding: const EdgeInsets.only(
                   top: 10,
@@ -69,6 +70,8 @@ class _ManageEventPageState extends State<ManageEventPage> {
                   height: 70,
                   child: Row(
                     children: [
+                      
+                      // drowdown
                       Row(
                         children: [
                           Container(
@@ -108,6 +111,8 @@ class _ManageEventPageState extends State<ManageEventPage> {
                         ],
                       ),
                       const Flexible(fit: FlexFit.tight, child: SizedBox()),
+                      
+                      // fetch button, with password verification
                       OutlinedButton(
                           onPressed: () async {
                             if (organizerSelection != "") {
@@ -197,6 +202,8 @@ class _ManageEventPageState extends State<ManageEventPage> {
                 ),
               ),
               const Divider(),
+              
+              // loaded events
               ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: eventUseCase.searchResults.length,
