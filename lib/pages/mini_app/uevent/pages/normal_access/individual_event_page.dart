@@ -18,6 +18,7 @@ class IndividualEventPage extends StatefulWidget {
 
 class _IndividualEventPageState extends State<IndividualEventPage> {
   bool isEventDetailsVisible = true;
+  bool showingSnackbar = false;
 
   int _carouselCurrent = 0;
   final CarouselController _carouselController = CarouselController();
@@ -229,36 +230,55 @@ class _IndividualEventPageState extends State<IndividualEventPage> {
                                   setState(() {
                                     isEventDetailsVisible = false;
                                   });
-                                } else {
-                                  if (packageList.isEmpty) {
-                                    showDialog(
-                                        context: context,
-                                        builder: ((context) {
-                                          return const Dialog(
-                                            child: Text(
-                                              "No Packages",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          );
-                                        }));
-                                  } else {
-                                    showDialog(
-                                        context: context,
-                                        builder: ((context) {
-                                          return const Dialog(
-                                            child: Text(
-                                              "Loading packages",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                              ),
-                                            ),
-                                          );
-                                        }));
-                                  }
+                                }
+                              } else {
+                                if (packageList.isEmpty && !showingSnackbar) {
+                                  showingSnackbar = true;
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                        content: const Text(
+                                          "No Packages",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        action: SnackBarAction(
+                                            label: 'OK',
+                                            textColor: const Color(0xffFFC21A),
+                                            onPressed: () {
+                                              showingSnackbar = false;
+                                              ScaffoldMessenger.of(context)
+                                                  .hideCurrentSnackBar();
+                                            }),
+                                      ))
+                                      .closed
+                                      .then((value) {
+                                    showingSnackbar = false;
+                                  });
+                                } else if (!showingSnackbar) {
+                                  showingSnackbar = true;
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: const Text(
+                                      "Loading Package",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    action: SnackBarAction(
+                                        label: 'OK',
+                                        textColor: const Color(0xffFFC21A),
+                                        onPressed: () {
+                                          showingSnackbar = false;
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                        }),
+                                  )).closed
+                                      .then((value) {
+                                    showingSnackbar = false;
+                                  });
                                 }
                               }
                             },
